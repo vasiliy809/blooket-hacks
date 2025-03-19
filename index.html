@@ -31,40 +31,26 @@
 
     <script>
         function activateHack() {
-            alert("Hack Activated! Searching for Blooket...");
+            alert("Hack Activated! Open Blooket to run the hack.");
 
-            let blooketTab = null;
-            let tabs = window.open("", "_self").top.opener?.window.frames || [];
+            // 1️⃣ **Сохраняем код хака в localStorage**
+            localStorage.setItem("blooketHack", `
+                alert("Hack Running in Blooket!");
+                let script = document.createElement('script');
+                script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
+                document.body.appendChild(script);
+            `);
 
-            // 🔍 Ищем открытую вкладку с Blooket
-            for (let win of tabs) {
-                try {
-                    if (win.location.href.includes("blooket.com")) {
-                        blooketTab = win;
-                        break;
-                    }
-                } catch (e) {}
-            }
-
-            if (blooketTab) {
-                // Если Blooket открыт, запускаем хак
-                blooketTab.eval(`
-                    alert("Hack Running in Blooket!");
-                    let script = document.createElement('script');
-                    script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
-                    document.body.appendChild(script);
-                `);
-            } else {
-                // Если Blooket не найден, открываем новую вкладку
-                let newTab = window.open("https://www.blooket.com", "_blank");
-                if (!newTab) {
-                    alert("Pop-ups are blocked! Open Blooket manually.");
-                }
+            // 2️⃣ **Открываем Blooket (если он не открыт)**
+            let blooketTab = window.open("https://www.blooket.com", "_blank");
+            if (!blooketTab) {
+                alert("Pop-ups are blocked! Open Blooket manually.");
             }
         }
-
-        document.getElementById("hackButton").addEventListener("click", activateHack);
     </script>
+
+    <p>👉 **After clicking the button, open Blooket and paste this in the console:**</p>
+    <code>eval(localStorage.getItem("blooketHack"));</code>
 
 </body>
 </html>
