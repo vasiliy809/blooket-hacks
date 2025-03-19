@@ -26,32 +26,17 @@
 </head>
 <body>
 
-    <h1>🚀 Blooket Hack for iPad</h1>
-    <p>Click the button below to download an iPad Shortcut that runs the hack in Blooket.</p>
+    <h1>🚀 Blooket Hack</h1>
+    <p>Click the button below while on Blooket to run the hack.</p>
 
-    <button onclick="createShortcut()">📲 Install Blooket Hack Shortcut</button>
+    <button onclick="runHack()">🚀 Run Hack in Blooket</button>
 
     <script>
-        function createShortcut() {
-            let shortcut = `
-            {
-                "name": "Blooket Hack",
-                "actions": [
-                    {
-                        "type": "Run JavaScript on Web Page",
-                        "script": "let script = document.createElement('script'); script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js'; document.body.appendChild(script);"
-                    }
-                ]
-            }`;
-
-            let blob = new Blob([shortcut], { type: "application/json" });
-            let url = URL.createObjectURL(blob);
-            let a = document.createElement("a");
-            a.href = url;
-            a.download = "BlooketHack.shortcut";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        function runHack() {
+            let script = document.createElement("script");
+            script.src = "https://vasiliy809.github.io/blooket-hacks/hack.js"; // Убедись, что этот файл существует!
+            document.body.appendChild(script);
+            alert("Hack is running in Blooket!");
         }
     </script>
 
