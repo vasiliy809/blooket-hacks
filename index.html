@@ -8,37 +8,47 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            margin-top: 50px;
         }
-        .btn {
-            display: inline-block;
-            padding: 15px 25px;
+        button {
             font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            color: white;
+            padding: 15px 30px;
             background-color: #28a745;
-            border-radius: 5px;
+            color: white;
+            border: none;
             cursor: pointer;
+            border-radius: 5px;
         }
-        .btn:hover {
+        button:hover {
             background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <h1>Blooket Hack</h1>
-    <p>Click the button below to open Blooket and run the hack automatically.</p>
-
-    <a href="https://play.blooket.com/" target="_blank" class="btn" onclick="setTimeout(runHack, 5000);">
-        🚀 Open Blooket & Run Hack
-    </a>
+    <h1>🚀 Blooket Hack</h1>
+    <button onclick="runHack()">Activate Hack</button>
 
     <script>
         function runHack() {
-            /**
+            alert("Hack Activated!");
+
+            let blooketTab = null;
+            let tabs = window.open("", "_self").top.opener?.window.frames || [];
+
+            // Ищем открытую вкладку с Blooket
+            for (let win of tabs) {
+                if (win.location.href.includes("blooket.com")) {
+                    blooketTab = win;
+                    break;
+                }
+            }
+
+            if (blooketTab) {
+                // Если вкладка Blooket найдена, запускаем хак
+                blooketTab.eval(`
+                    alert("Hack Running in Blooket!");
+                    /**
  * @license AGPL-3.0
  * Blooket Cheats
  * Copyright (C) 2023-present 05Konz
@@ -3506,7 +3516,21 @@
 })();
 
 
-            })();
+                `);
+            } else {
+                // Если вкладка Blooket не найдена, открываем новую
+                let newTab = window.open("https://www.blooket.com", "_blank");
+                if (newTab) {
+                    setTimeout(() => {
+                        newTab.eval(`
+                            alert("Hack Running in Blooket!");
+                            // ВСТАВЬ СЮДА СВОЙ КОД ХАКА
+                        `);
+                    }, 5000); // Ожидание 5 сек, чтобы страница успела загрузиться
+                } else {
+                    alert("No Blooket tab found and pop-ups are blocked!");
+                }
+            }
         }
     </script>
 
