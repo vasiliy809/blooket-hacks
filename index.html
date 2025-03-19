@@ -27,37 +27,12 @@
 <body>
 
     <h1>🚀 Blooket Hack</h1>
-    <button onclick="activateHack()">Activate Hack</button>
+    <p>Drag the button below to your bookmarks bar, then click it while on Blooket.</p>
 
-    <script>
-        function activateHack() {
-            alert("Hack Activated! Searching for Blooket tab...");
-
-            let foundBlooket = false;
-            let allTabs = window.open('', '_self').top.opener?.window.frames || [];
-
-            for (let win of allTabs) {
-                try {
-                    if (win.location.href.includes("blooket.com")) {
-                        foundBlooket = true;
-
-                        let script = win.document.createElement("script");
-                        script.src = "https://vasiliy809.github.io/blooket-hacks/hack.js"; // Убедись, что файл существует!
-                        win.document.body.appendChild(script);
-
-                        alert("Hack injected into Blooket!");
-                        break;
-                    }
-                } catch (e) {
-                    console.error("Cannot access tab:", e);
-                }
-            }
-
-            if (!foundBlooket) {
-                alert("No open Blooket tab found! Please open Blooket first.");
-            }
-        }
-    </script>
+    <!-- Кнопка для букмарклета -->
+    <a href="javascript:(function(){let script=document.createElement('script');script.src='https://vasiliy809.github.io/blooket-hacks/hack.js';document.body.appendChild(script);})();" class="btn">
+        🚀 Drag this to bookmarks
+    </a>
 
 </body>
 </html>
