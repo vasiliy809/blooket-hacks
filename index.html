@@ -31,28 +31,31 @@
 
     <script>
         function activateHack() {
-            alert("Hack Activated! Open Blooket, and the hack will run automatically.");
+            alert("Hack Activated! Searching for Blooket tab...");
 
-            // 1️⃣ **Сохраняем хак в localStorage**
-            localStorage.setItem("blooketHack", `
-                alert("Hack Running in Blooket!");
-                let script = document.createElement('script');
-                script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
-                document.body.appendChild(script);
-            `);
+            let foundBlooket = false;
+            let allTabs = window.open('', '_self').top.opener?.window.frames || [];
 
-            // 2️⃣ **Открываем Blooket (если он не открыт)**
-            let blooketTab = window.open("https://www.blooket.com", "_blank");
-            if (!blooketTab) {
-                alert("Pop-ups are blocked! Open Blooket manually.");
+            for (let win of allTabs) {
+                try {
+                    if (win.location.href.includes("blooket.com")) {
+                        foundBlooket = true;
+
+                        let script = win.document.createElement("script");
+                        script.src = "https://vasiliy809.github.io/blooket-hacks/hack.js"; // Убедись, что файл существует!
+                        win.document.body.appendChild(script);
+
+                        alert("Hack injected into Blooket!");
+                        break;
+                    }
+                } catch (e) {
+                    console.error("Cannot access tab:", e);
+                }
             }
-        }
 
-        // 3️⃣ **Если ты уже в Blooket, хак запускается сам**
-        if (window.location.href.includes("blooket.com")) {
-            setTimeout(() => {
-                eval(localStorage.getItem("blooketHack"));
-            }, 3000); // Запускаем через 3 секунды, чтобы страница загрузилась
+            if (!foundBlooket) {
+                alert("No open Blooket tab found! Please open Blooket first.");
+            }
         }
     </script>
 
