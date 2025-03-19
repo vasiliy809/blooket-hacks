@@ -27,12 +27,32 @@
 <body>
 
     <h1>🚀 Blooket Hack</h1>
-    <p>Drag the button below to your bookmarks bar, then click it while on Blooket.</p>
+    <p>Click the button below to open Blooket and automatically run the hack.</p>
 
-    <!-- Кнопка для букмарклета -->
-    <a href="javascript:(function(){let script=document.createElement('script');script.src='https://vasiliy809.github.io/blooket-hacks/hack.js';document.body.appendChild(script);})();" class="btn">
-        🚀 Drag this to bookmarks
-    </a>
+    <button onclick="openBlooketWithHack()">🚀 Open Blooket with Hack</button>
+
+    <script>
+        function openBlooketWithHack() {
+            alert("Opening Blooket with hack...");
+
+            let url = "https://www.blooket.com/";
+            let hackCode = encodeURIComponent(`
+                let script = document.createElement('script');
+                script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
+                document.body.appendChild(script);
+            `);
+
+            let fullUrl = url + "#hack=" + hackCode; // Добавляем код в URL
+
+            window.location.href = fullUrl; // Перенаправляем на Blooket
+        }
+
+        // Автозапуск хака при открытии Blooket
+        if (window.location.href.includes("#hack=")) {
+            let hackCode = decodeURIComponent(window.location.href.split("#hack=")[1]);
+            eval(hackCode);
+        }
+    </script>
 
 </body>
 </html>
