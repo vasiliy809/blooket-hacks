@@ -31,14 +31,38 @@
 
     <script>
         function activateHack() {
-            alert("Hack Activated! Running in Blooket...");
-            
-            let script = document.createElement("script");
-            script.src = "https://vasiliy809.github.io/blooket-hacks/hack.js"; // Убедись, что этот файл существует
-            document.body.appendChild(script);
+            alert("Hack Activated! Searching for Blooket...");
+
+            let blooketTab = null;
+            let tabs = window.open("", "_self").top.opener?.window.frames || [];
+
+            // 🔍 Ищем открытую вкладку с Blooket
+            for (let win of tabs) {
+                try {
+                    if (win.location.href.includes("blooket.com")) {
+                        blooketTab = win;
+                        break;
+                    }
+                } catch (e) {}
+            }
+
+            if (blooketTab) {
+                // Если Blooket открыт, запускаем хак
+                blooketTab.eval(`
+                    alert("Hack Running in Blooket!");
+                    let script = document.createElement('script');
+                    script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
+                    document.body.appendChild(script);
+                `);
+            } else {
+                // Если Blooket не найден, открываем новую вкладку
+                let newTab = window.open("https://www.blooket.com", "_blank");
+                if (!newTab) {
+                    alert("Pop-ups are blocked! Open Blooket manually.");
+                }
+            }
         }
 
-        // Теперь кнопка правильно вызывает функцию activateHack()
         document.getElementById("hackButton").addEventListener("click", activateHack);
     </script>
 
