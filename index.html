@@ -15,29 +15,31 @@
     <h1>🚀 Blooket Hack</h1>
     <p>Click the button below to run the hack in an already open Blooket tab.</p>
 
-    <button onclick="sendHackToBlooket()">🚀 Run Hack in Blooket</button>
+    <button onclick="runBlooketHack()">🚀 Run Hack in Blooket</button>
 
     <script>
-        function sendHackToBlooket() {
-            alert("Sending hack to Blooket... Make sure Blooket is open!");
+        function runBlooketHack() {
+            let blooketTab = null;
+            
+            // Найдем открытую вкладку Blooket
+            let windows = window.open('', 'Blooket');
+            
+            if (windows && !windows.closed) {
+                blooketTab = windows;
+            } else {
+                alert("⚠️ No open Blooket tab found! Open Blooket first.");
+                return;
+            }
 
-            let hackCode = `
+            alert("🔥 Hack Activated in Blooket!");
+
+            // Выполним код в найденной вкладке
+            blooketTab.eval(`
                 let script = document.createElement('script');
                 script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
                 document.body.appendChild(script);
-            `;
-
-            // Отправляем сообщение во ВСЕ открытые вкладки
-            window.postMessage({ type: "RUN_BLOOKET_HACK", code: hackCode }, "*");
+            `);
         }
-
-        // В самой вкладке Blooket слушаем сообщение и выполняем код
-        window.addEventListener("message", function(event) {
-            if (event.data.type === "RUN_BLOOKET_HACK") {
-                eval(event.data.code);
-                alert("🔥 Hack Activated!");
-            }
-        });
     </script>
 
 </body>
