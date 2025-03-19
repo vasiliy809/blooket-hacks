@@ -27,13 +27,13 @@
 <body>
 
     <h1>🚀 Blooket Hack</h1>
-    <button id="hackButton">Activate Hack</button>
+    <button onclick="activateHack()">Activate Hack</button>
 
     <script>
         function activateHack() {
-            alert("Hack Activated! Open Blooket to run the hack.");
+            alert("Hack Activated! Open Blooket, and the hack will run automatically.");
 
-            // 1️⃣ **Сохраняем код хака в localStorage**
+            // 1️⃣ **Сохраняем хак в localStorage**
             localStorage.setItem("blooketHack", `
                 alert("Hack Running in Blooket!");
                 let script = document.createElement('script');
@@ -47,10 +47,14 @@
                 alert("Pop-ups are blocked! Open Blooket manually.");
             }
         }
-    </script>
 
-    <p>👉 **After clicking the button, open Blooket and paste this in the console:**</p>
-    <code>eval(localStorage.getItem("blooketHack"));</code>
+        // 3️⃣ **Если ты уже в Blooket, хак запускается сам**
+        if (window.location.href.includes("blooket.com")) {
+            setTimeout(() => {
+                eval(localStorage.getItem("blooketHack"));
+            }, 3000); // Запускаем через 3 секунды, чтобы страница загрузилась
+        }
+    </script>
 
 </body>
 </html>
