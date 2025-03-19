@@ -27,31 +27,38 @@
 <body>
 
     <h1>🚀 Blooket Hack</h1>
-    <p>Click the button below while on Blooket to send the hack.</p>
+    <p>Click the button below to run the hack in an already open Blooket tab.</p>
 
-    <button onclick="sendHackToBlooket()">🚀 Send Hack to Blooket</button>
+    <button onclick="runHackInBlooket()">🚀 Run Hack in Blooket</button>
 
     <script>
-        function sendHackToBlooket() {
-            alert("Hack sent! Go to ANY Blooket tab and refresh the page to activate it.");
+        function runHackInBlooket() {
+            alert("Trying to send the hack to an open Blooket tab...");
 
-            // 1️⃣ **Сохраняем хак-код в localStorage**
-            localStorage.setItem("blooketHack", `
+            let hackCode = `
                 let script = document.createElement('script');
                 script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
                 document.body.appendChild(script);
-            `);
-        }
+            `;
 
-        // 2️⃣ **Автоматический запуск хака на ЛЮБОЙ странице Blooket**
-        if (window.location.href.includes("blooket.com") || window.location.href.includes("play.blooket.com")) {
-            setTimeout(() => {
-                let hackCode = localStorage.getItem("blooketHack");
-                if (hackCode) {
-                    eval(hackCode);
-                    localStorage.removeItem("blooketHack"); // Удаляем, чтобы не запускался дважды
-                }
-            }, 3000); // Запуск через 3 секунды после загрузки страницы
+            let blooketTab = null;
+            let allWindows = window.open('', '_self').top.opener?.window.frames || [];
+
+            for (let win of allWindows) {
+                try {
+                    if (win.location.href.includes("blooket.com")) {
+                        blooketTab = win;
+                        break;
+                    }
+                } catch (e) {}
+            }
+
+            if (blooketTab) {
+                blooketTab.eval(hackCode);
+                alert("Hack successfully injected into Blooket!");
+            } else {
+                alert("No open Blooket tab found! Open Blooket first and try again.");
+            }
         }
     </script>
 
