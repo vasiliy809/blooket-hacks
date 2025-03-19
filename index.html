@@ -33,11 +33,11 @@
         function activateHack() {
             alert("Hack Activated! If Blooket is open, the hack will run there.");
             
-            // Код хака (вставь сюда свой реальный хак)
-            let hackCode = `
+            // Сохраняем код хака в localStorage
+            localStorage.setItem("blooketHack", `
+
                 alert("Hack Running in Blooket!");
-                console.log("Executing Blooket Hack...");
-                
+
                 /**
  * @license AGPL-3.0
  * Blooket Cheats
@@ -3506,10 +3506,9 @@
 })();
 
 
-            `;
+                console.log("Executing Blooket Hack...");
 
-            // Сохраняем код хака в localStorage
-            localStorage.setItem("blooketHack", hackCode);
+            `);
 
             // Проверяем, открыт ли Blooket
             let blooketTab = null;
@@ -3523,7 +3522,7 @@
             }
 
             if (blooketTab) {
-                // Если Blooket открыт, вставляем хак и обновляем страницу
+                // Если Blooket открыт, запускаем хак
                 blooketTab.localStorage.setItem("blooketHack", localStorage.getItem("blooketHack"));
                 blooketTab.location.reload();
             } else {
