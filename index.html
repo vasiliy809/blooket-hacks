@@ -22,17 +22,33 @@
         button:hover {
             background-color: #218838;
         }
+        textarea {
+            width: 80%;
+            height: 50px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
 
     <h1>🚀 Blooket Hack</h1>
-    <p>Drag the button below to your bookmarks bar, then click it while on Blooket.</p>
+    <p>Copy the code below and paste it into the address bar of the **already open Blooket tab**, then press Enter.</p>
 
-    <!-- Кнопка для букмарклета -->
-    <a href="javascript:(function(){let script=document.createElement('script');script.src='https://vasiliy809.github.io/blooket-hacks/hack.js';document.body.appendChild(script);})();" class="btn">
-        🚀 Drag this to bookmarks
-    </a>
+    <textarea id="hackCode" readonly>
+javascript:(function(){let script=document.createElement('script');script.src='https://vasiliy809.github.io/blooket-hacks/hack.js';document.body.appendChild(script);})();
+    </textarea>
+
+    <button onclick="copyHack()">📋 Copy Hack Code</button>
+
+    <script>
+        function copyHack() {
+            let hackText = document.getElementById("hackCode");
+            hackText.select();
+            document.execCommand("copy");
+            alert("Hack code copied! Go to the already open Blooket tab, paste it in the address bar, and press Enter.");
+        }
+    </script>
 
 </body>
 </html>
