@@ -30,13 +30,16 @@
     <button id="hackButton">Activate Hack</button>
 
     <script>
-        document.getElementById("hackButton").addEventListener("click", function() {
+        function activateHack() {
             alert("Hack Activated! Running in Blooket...");
             
             let script = document.createElement("script");
-            script.src = "https://vasiliy809.github.io/blooket-hacks/hack.js"; // Убедись, что файл существует!
+            script.src = "https://vasiliy809.github.io/blooket-hacks/hack.js"; // Убедись, что этот файл существует
             document.body.appendChild(script);
-        });
+        }
+
+        // Теперь кнопка правильно вызывает функцию activateHack()
+        document.getElementById("hackButton").addEventListener("click", activateHack);
     </script>
 
 </body>
