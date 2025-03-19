@@ -41,35 +41,26 @@
 
     <div class="container">
         <h1>🚀 Blooket Hack</h1>
-        <p>Click the button below to run the hack in all open Blooket tabs.</p>
+        <p>Click the button below to open Blooket and run the hack.</p>
         <button onclick="runHack()">🚀 Run Hack</button>
     </div>
 
     <script>
         function runHack() {
-            let found = false;
-
-            // Перебираем все открытые окна
-            for (let i = 0; i < window.frames.length; i++) {
-                let frame = window.frames[i];
-                try {
-                    if (frame.location.href.includes("blooket.com")) {
-                        found = true;
-                        frame.eval(`
-                            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                            .then(response => response.text())
-                            .then(eval)
-                            .catch(error => alert('❌ Hack failed: ' + error));
-                        `);
-                        console.log("✅ Hack injected into Blooket tab!");
-                    }
-                } catch (e) {
-                    console.error("❌ No access to frame:", e);
-                }
-            }
-
-            if (!found) {
-                alert("❌ No open Blooket tabs found! Open Blooket first and try again.");
+            let blooketTab = window.open("https://play.blooket.com", "_blank");
+            
+            if (blooketTab) {
+                setTimeout(() => {
+                    blooketTab.eval(`
+                        fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                        .then(response => response.text())
+                        .then(eval)
+                        .catch(error => alert('❌ Hack failed: ' + error));
+                    `);
+                }, 3000);
+                alert("✅ Blooket opened. Hack will run in a few seconds.");
+            } else {
+                alert("❌ Pop-ups are blocked! Allow pop-ups and try again.");
             }
         }
     </script>
