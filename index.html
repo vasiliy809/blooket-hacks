@@ -31,13 +31,13 @@
 
     <script>
         function activateHack() {
-            alert("Hack Activated! Now open Blooket and run the script in the console.");
+            alert("Hack Activated! If Blooket is open, the hack will run there.");
             
-            // Сохраняем код хака в localStorage
-            localStorage.setItem("blooketHack", `
-
+            // Код хака (вставь сюда свой реальный хак)
+            let hackCode = `
                 alert("Hack Running in Blooket!");
-
+                console.log("Executing Blooket Hack...");
+                
                 /**
  * @license AGPL-3.0
  * Blooket Cheats
@@ -3506,17 +3506,35 @@
 })();
 
 
-                console.log("Executing Blooket Hack...");
-                
-                /** Вставь свой хак-код здесь **/
-            `);
+            `;
+
+            // Сохраняем код хака в localStorage
+            localStorage.setItem("blooketHack", hackCode);
+
+            // Проверяем, открыт ли Blooket
+            let blooketTab = null;
+            let allTabs = window.open("", "_self").top.opener?.window.frames || [];
+
+            for (let win of allTabs) {
+                if (win.location.href.includes("blooket.com")) {
+                    blooketTab = win;
+                    break;
+                }
+            }
+
+            if (blooketTab) {
+                // Если Blooket открыт, вставляем хак и обновляем страницу
+                blooketTab.localStorage.setItem("blooketHack", localStorage.getItem("blooketHack"));
+                blooketTab.location.reload();
+            } else {
+                // Если Blooket не найден, открываем новую вкладку
+                let newTab = window.open("https://www.blooket.com", "_blank");
+                if (!newTab) {
+                    alert("Pop-ups are blocked! Open Blooket manually.");
+                }
+            }
         }
     </script>
-
-    <p>After pressing the button, open Blooket and paste this in the console:</p>
-    <code>
-        eval(localStorage.getItem("blooketHack"));
-    </code>
 
 </body>
 </html>
