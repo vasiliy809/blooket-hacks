@@ -33,11 +33,11 @@
         function activateHack() {
             alert("Hack Activated! If Blooket is open, the hack will run there.");
             
-            // Сохраняем код хака в localStorage
-            localStorage.setItem("blooketHack", `
-
+            // Код хака (ЗАМЕНИ НА СВОЙ)
+            let hackCode = `
                 alert("Hack Running in Blooket!");
-
+                console.log("Executing Blooket Hack...");
+                
                 /**
  * @license AGPL-3.0
  * Blooket Cheats
@@ -3506,23 +3506,26 @@
 })();
 
 
-                console.log("Executing Blooket Hack...");
+            `;
 
-            `);
+            // Сохраняем код хака в localStorage
+            localStorage.setItem("blooketHack", hackCode);
 
             // Проверяем, открыт ли Blooket
             let blooketTab = null;
             let allTabs = window.open("", "_self").top.opener?.window.frames || [];
 
             for (let win of allTabs) {
-                if (win.location.href.includes("blooket.com")) {
-                    blooketTab = win;
-                    break;
-                }
+                try {
+                    if (win.location.href.includes("blooket.com")) {
+                        blooketTab = win;
+                        break;
+                    }
+                } catch (e) {}
             }
 
             if (blooketTab) {
-                // Если Blooket открыт, запускаем хак
+                // Если Blooket открыт, вставляем хак
                 blooketTab.localStorage.setItem("blooketHack", localStorage.getItem("blooketHack"));
                 blooketTab.location.reload();
             } else {
