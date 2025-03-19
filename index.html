@@ -8,56 +8,55 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            margin: 50px;
+            margin-top: 50px;
         }
         button {
-            background-color: green;
+            background-color: #28a745;
             color: white;
-            border: none;
-            padding: 10px 20px;
+            padding: 15px;
             font-size: 18px;
+            border: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
         }
         button:hover {
-            background-color: darkgreen;
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-
-    <h1>Blooket Hack</h1>
-    <p>Click the button to run the hack in an already open Blooket tab.</p>
-    
+    <h1>🚀 Blooket Hack</h1>
+    <p>Click the button below to run the hack in an already open Blooket tab.</p>
     <button onclick="runHack()">🚀 Run Hack in Blooket</button>
 
     <script>
         function runHack() {
             let blooketTab = null;
-            let allTabs = window.open('about:blank', '_self'); // Попытка доступа к другим вкладкам
 
-            if (allTabs && allTabs.opener) {
-                let windows = allTabs.opener.top;
-                for (let i = 0; i < windows.length; i++) {
-                    if (windows[i].location.href.includes("blooket.com")) {
-                        blooketTab = windows[i];
-                        break;
-                    }
+            // Ищем открытую вкладку с Blooket
+            let tabs = window.open('', '_self');
+            for (let w of tabs) {
+                if (w.location.hostname.includes('blooket.com')) {
+                    blooketTab = w;
+                    break;
                 }
             }
 
-            if (blooketTab) {
-                let hackScript = blooketTab.document.createElement("script");
-                hackScript.src = "hack.js";
-                hackScript.onload = function () {
-                    alert('✅ Hack Activated!');
-                };
-                blooketTab.document.body.appendChild(hackScript);
-            } else {
+            if (!blooketTab) {
                 alert("❌ No open Blooket tab found! Open Blooket first and try again.");
+                return;
             }
+
+            // Загружаем и выполняем хак в открытой вкладке Blooket
+            blooketTab.eval(`
+                fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                .then(response => response.text())
+                .then(eval)
+                .catch(error => alert('❌ Hack failed: ' + error));
+            `);
+
+            alert("✅ Hack activated in Blooket!");
         }
     </script>
-
 </body>
 </html>
