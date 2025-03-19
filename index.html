@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blooket Hack</title>
+    <title>Global Hack Runner</title>
     <style>
         body {
             text-align: center;
@@ -40,29 +40,34 @@
 <body>
 
     <div class="container">
-        <h1>🚀 Blooket Hack</h1>
-        <p>Click the button below to open Blooket and run the hack.</p>
-        <button onclick="runHack()">🚀 Run Hack</button>
+        <h1>🚀 Global Hack Runner</h1>
+        <p>Click the button below to run the hack in all open tabs.</p>
+        <button onclick="runHack()">🚀 Run Hack in All Tabs</button>
     </div>
 
     <script>
         function runHack() {
-            let blooketTab = window.open("https://play.blooket.com", "_blank");
-            
-            if (blooketTab) {
-                setTimeout(() => {
-                    blooketTab.eval(`
-                        fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                        .then(response => response.text())
-                        .then(eval)
-                        .catch(error => alert('❌ Hack failed: ' + error));
-                    `);
-                }, 3000);
-                alert("✅ Blooket opened. Hack will run in a few seconds.");
-            } else {
-                alert("❌ Pop-ups are blocked! Allow pop-ups and try again.");
-            }
+            // Отправляем сообщение ВСЕМ вкладкам
+            const message = { command: "RUN_HACK" };
+            window.postMessage(message, "*");
+            alert("✅ Hack command sent to all tabs!");
         }
+
+        function executeHack() {
+            // Загружаем и выполняем hack.js
+            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                .then(response => response.text())
+                .then(eval)
+                .catch(error => console.error('❌ Hack failed:', error));
+        }
+
+        // Ждём сообщения от других вкладок
+        window.addEventListener("message", (event) => {
+            if (event.data.command === "RUN_HACK") {
+                executeHack();
+            }
+        });
+
     </script>
 
 </body>
