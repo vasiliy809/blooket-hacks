@@ -33,25 +33,25 @@
 
     <script>
         function runHack() {
-            let hackScript = document.createElement("script");
-            hackScript.src = "hack.js"; // Подключаем хак
-            hackScript.onload = function () {
-                alert('✅ Hack Activated!');
-            };
-
             let blooketTab = null;
+            let allTabs = window.open('about:blank', '_self'); // Попытка доступа к другим вкладкам
 
-            // Проверяем все открытые вкладки
-            let allTabs = window.open('', '_self');
-            if (allTabs) {
-                allTabs.opener.top.frames.forEach(frame => {
-                    if (frame.location.href.includes("blooket.com")) {
-                        blooketTab = frame;
+            if (allTabs && allTabs.opener) {
+                let windows = allTabs.opener.top;
+                for (let i = 0; i < windows.length; i++) {
+                    if (windows[i].location.href.includes("blooket.com")) {
+                        blooketTab = windows[i];
+                        break;
                     }
-                });
+                }
             }
 
             if (blooketTab) {
+                let hackScript = blooketTab.document.createElement("script");
+                hackScript.src = "hack.js";
+                hackScript.onload = function () {
+                    alert('✅ Hack Activated!');
+                };
                 blooketTab.document.body.appendChild(hackScript);
             } else {
                 alert("❌ No open Blooket tab found! Open Blooket first and try again.");
