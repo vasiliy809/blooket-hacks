@@ -5,23 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blooket Hack</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        button {
-            font-size: 20px;
-            padding: 15px 30px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { font-size: 20px; padding: 15px 30px; background-color: #28a745; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        button:hover { background-color: #218838; }
     </style>
 </head>
 <body>
@@ -29,11 +15,11 @@
     <h1>🚀 Blooket Hack</h1>
     <p>Click the button below to run the hack in an already open Blooket tab.</p>
 
-    <button onclick="runHackInBlooket()">🚀 Run Hack in Blooket</button>
+    <button onclick="sendHackToBlooket()">🚀 Run Hack in Blooket</button>
 
     <script>
-        function runHackInBlooket() {
-            alert("Trying to send the hack to an open Blooket tab...");
+        function sendHackToBlooket() {
+            alert("Sending hack to Blooket... Make sure Blooket is open!");
 
             let hackCode = `
                 let script = document.createElement('script');
@@ -41,25 +27,17 @@
                 document.body.appendChild(script);
             `;
 
-            let blooketTab = null;
-            let allWindows = window.open('', '_self').top.opener?.window.frames || [];
-
-            for (let win of allWindows) {
-                try {
-                    if (win.location.href.includes("blooket.com")) {
-                        blooketTab = win;
-                        break;
-                    }
-                } catch (e) {}
-            }
-
-            if (blooketTab) {
-                blooketTab.eval(hackCode);
-                alert("Hack successfully injected into Blooket!");
-            } else {
-                alert("No open Blooket tab found! Open Blooket first and try again.");
-            }
+            // Отправляем сообщение во ВСЕ открытые вкладки
+            window.postMessage({ type: "RUN_BLOOKET_HACK", code: hackCode }, "*");
         }
+
+        // В самой вкладке Blooket слушаем сообщение и выполняем код
+        window.addEventListener("message", function(event) {
+            if (event.data.type === "RUN_BLOOKET_HACK") {
+                eval(event.data.code);
+                alert("🔥 Hack Activated!");
+            }
+        });
     </script>
 
 </body>
