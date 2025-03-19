@@ -22,31 +22,36 @@
         button:hover {
             background-color: #218838;
         }
-        textarea {
-            width: 80%;
-            height: 50px;
-            margin-top: 10px;
-            font-size: 16px;
-        }
     </style>
 </head>
 <body>
 
-    <h1>🚀 Blooket Hack</h1>
-    <p>Copy the code below and paste it into the address bar of the **already open Blooket tab**, then press Enter.</p>
+    <h1>🚀 Blooket Hack for iPad</h1>
+    <p>Click the button below to download an iPad Shortcut that runs the hack in Blooket.</p>
 
-    <textarea id="hackCode" readonly>
-javascript:(function(){let script=document.createElement('script');script.src='https://vasiliy809.github.io/blooket-hacks/hack.js';document.body.appendChild(script);})();
-    </textarea>
-
-    <button onclick="copyHack()">📋 Copy Hack Code</button>
+    <button onclick="createShortcut()">📲 Install Blooket Hack Shortcut</button>
 
     <script>
-        function copyHack() {
-            let hackText = document.getElementById("hackCode");
-            hackText.select();
-            document.execCommand("copy");
-            alert("Hack code copied! Go to the already open Blooket tab, paste it in the address bar, and press Enter.");
+        function createShortcut() {
+            let shortcut = `
+            {
+                "name": "Blooket Hack",
+                "actions": [
+                    {
+                        "type": "Run JavaScript on Web Page",
+                        "script": "let script = document.createElement('script'); script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js'; document.body.appendChild(script);"
+                    }
+                ]
+            }`;
+
+            let blob = new Blob([shortcut], { type: "application/json" });
+            let url = URL.createObjectURL(blob);
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = "BlooketHack.shortcut";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
     </script>
 
