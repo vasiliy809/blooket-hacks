@@ -6,47 +6,51 @@
     <title>Bookmarklet Hack</title>
     <style>
         body {
-            text-align: center;
             font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
             background-color: #121212;
             color: white;
-            margin-top: 50px;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        .container {
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
         }
         .bookmarklet {
             display: inline-block;
-            font-size: 28px;
-            color: black;
-            background-color: yellow;
-            padding: 25px 50px;
-            border-radius: 10px;
-            text-decoration: none;
+            padding: 20px 40px;
+            font-size: 24px;
             font-weight: bold;
+            color: white;
+            background: red;
+            text-decoration: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .bookmarklet:hover {
+            background: darkred;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 24px;
+            margin-bottom: 40px;
         }
     </style>
 </head>
 <body>
 
-    <h1>🚀 Bookmarklet Hack</h1>
-    <div class="container">
-        <p>Drag the button below to your bookmarks bar:</p>
-        <a class="bookmarklet" href="javascript:(function(){
+    <h1>Bookmarklet Hack</h1>
+    <p>Drag this button to your bookmarks bar:</p>
+    
+    <a class="bookmarklet" href="javascript:(function(){ runHack(); })();">⚡ Run Hack</a>
+
+    <script>
+        function runHack() {
             alert('✅ Hack Activated!');
             
-            /* Вставляем код `hack.js` напрямую */
-            (function() {
-                alert('⚡ Running Hack!');
-                
-                /**
+            console.log('Hack is running...');
+            
+            /**
  * @license AGPL-3.0
  * Blooket Cheats
  * Copyright (C) 2023-present 05Konz
@@ -3514,12 +3518,8 @@
 })();
 
 
-                
-            })();
-        })();">
-            ⚡ Run Hack
-        </a>
-    </div>
+        }
+    </script>
 
 </body>
 </html>
