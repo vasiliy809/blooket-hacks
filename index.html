@@ -47,13 +47,21 @@
 
     <h1>🚀 Bookmarklet Hack</h1>
     <div class="container">
-        <p>Перетащите кнопку в панель закладок:</p>
+        <p>📌 Drag the button below to your bookmarks bar:</p>
         <a class="bookmarklet" href="javascript:(function(){
+            alert('✅ Hack Activated!');
+
             let script = document.createElement('script');
             script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
+            script.onload = function() {
+                alert('🔥 Hack.js loaded and executed!');
+            };
+            script.onerror = function() {
+                alert('❌ Failed to load hack.js! Check the link.');
+            };
             document.body.appendChild(script);
         })();">
-            🔴 Запустить Hack
+            🔴 Run Hack
         </a>
     </div>
 
