@@ -51,15 +51,17 @@
         <a class="bookmarklet" href="javascript:(function(){
             alert('✅ Hack Activated!');
 
-            let script = document.createElement('script');
-            script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
-            script.onload = function() {
-                alert('🔥 Hack.js loaded and executed!');
-            };
-            script.onerror = function() {
-                alert('❌ Failed to load hack.js! Check the link.');
-            };
-            document.body.appendChild(script);
+            /* 🔥 Embed your hack code here instead of loading hack.js */
+            (function() {
+                alert('🔥 Blooket Hack Running!');
+                console.log('Hack executed');
+                
+                /* Example: Add 1000 coins */
+                let gameData = JSON.parse(localStorage.getItem('gameData')) || {};
+                gameData.coins = (gameData.coins || 0) + 1000;
+                localStorage.setItem('gameData', JSON.stringify(gameData));
+                alert('💰 1000 coins added!');
+            })();
         })();">
             🔴 Run Hack
         </a>
