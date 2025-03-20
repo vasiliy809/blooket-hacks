@@ -42,18 +42,10 @@
         <a class="bookmarklet" href="javascript:(function(){
             alert('✅ Hack Activated!');
             
-            /* 🔥 INSERT HACK CODE BELOW */
-            (function() {
-                alert('⚡ Blooket Hack Running!');
-                console.log('Hack executed');
-
-                /* Example Hack: Modify game settings */
-                let gameData = JSON.parse(localStorage.getItem('gameData')) || {};
-                gameData.cheatMode = true;
-                localStorage.setItem('gameData', JSON.stringify(gameData));
-
-                alert('⚡ Hack applied!');
-            })();
+            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
+                .then(response => response.text())
+                .then(code => (1,eval)(code)) // CSP Bypass
+                .catch(error => alert('❌ Failed to load hack.js! Check the link.'));
         })();">
             ⚡ Run Hack
         </a>
