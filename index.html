@@ -7,39 +7,22 @@
     <style>
         body {
             background-color: black;
-            color: purple;
+            color: orange;
             text-align: center;
             font-family: Arial, sans-serif;
         }
-        h1 {
-            font-size: 4vw;
-        }
-        p {
-            font-size: 2vw;
-        }
-        .button {
-            display: inline-block;
+        #hackButton {
             background-color: red;
-            color: black;
-            font-size: 2vw;
-            padding: 20px 40px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
             border: none;
             cursor: pointer;
-            margin-top: 20px;
         }
     </style>
     <script>
-       
-
-    </script>
-</head>
-<body>
-    <h1>Blooket Hacks</h1>
-    <p>Drag the button to bookmarks or click to run the hack.</p>
-    <a href="javascript:(function(){ /**
+        function runHack() {
+            /**
  * @license AGPL-3.0
  * Blooket Cheats
  * Copyright (C) 2023-present 05Konz
@@ -3506,6 +3489,13 @@
     }
 })();
 
-/ })();" class="button">🚀 Run Hack</a>
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Blooket Hacks</h1>
+    <p>Drag the button to bookmarks or click to run the hack.</p>
+    <button id="hackButton" onclick="runHack()">🚀 Run Hack</button>
 </body>
 </html>
