@@ -11,35 +11,33 @@
             text-align: center;
             font-family: Arial, sans-serif;
         }
-        h1 {
-            font-size: 3em;
-            margin-top: 20vh;
+        .container {
+            margin-top: 50px;
         }
-        p {
-            font-size: 1.5em;
-        }
-        .bookmarklet {
+        .hack-button {
             display: inline-block;
-            background-color: red;
-            color: white;
             padding: 15px 30px;
-            font-size: 1.5em;
-            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            cursor: pointer;
             border-radius: 10px;
             text-decoration: none;
-            margin-top: 20px;
-            cursor: grab;
-        }
-        .bookmarklet:hover {
-            background-color: darkred;
         }
     </style>
 </head>
 <body>
-    <h1>Blooket Hacks</h1>
-    <p>Drag the button to bookmarks or click to run the hack.</p>
-    
-    <a class="bookmarklet" href="javascript:(function(){**
+    <div class="container">
+        <h1>Blooket Hacks</h1>
+        <p>Drag the button to bookmarks or click to run the hack.</p>
+        
+        <a id="hackButton" class="hack-button">🚀 Run Hack</a>
+    </div>
+
+    <script>
+        document.getElementById("hackButton").setAttribute("href", "javascript:(function(){ 
+ /**
  * @license AGPL-3.0
  * Blooket Cheats
  * Copyright (C) 2023-present 05Konz
@@ -3506,6 +3504,8 @@
     }
 })();
 
-})();">🚀 Run Hack</a>
+ })();");
+    </script>
 </body>
 </html>
+
