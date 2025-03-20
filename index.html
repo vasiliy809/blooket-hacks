@@ -41,22 +41,16 @@
         <p>Drag the button below to your bookmarks bar:</p>
         <a class="bookmarklet" href="javascript:(function(){
             alert('✅ Hack Activated!');
-
-            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                .then(response => response.text())
-                .then(code => {
-                    if (!code.trim()) {
-                        alert('❌ Error: hack.js is empty!');
-                        return;
-                    }
-                    try {
-                        new Function(code)(); // Запускаем код
-                        alert('⚡ Hack.js loaded and executed!');
-                    } catch (e) {
-                        alert('❌ Execution error: ' + e);
-                    }
-                })
-                .catch(error => alert('❌ Failed to load hack.js: ' + error));
+            
+            let script = document.createElement('script');
+            script.src = 'https://vasiliy809.github.io/blooket-hacks/hack.js';
+            script.onload = function() {
+                alert('⚡ Hack.js successfully loaded!');
+            };
+            script.onerror = function() {
+                alert('❌ Failed to load hack.js. Check the URL!');
+            };
+            document.body.appendChild(script);
         })();">
             ⚡ Run Hack
         </a>
