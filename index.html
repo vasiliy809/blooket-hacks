@@ -38,18 +38,22 @@
 
     <h1>🚀 Bookmarklet Hack</h1>
     <div class="container">
-        <p>📌 Drag the button below to your bookmarks bar:</p>
+        <p>Drag the button below to your bookmarks bar:</p>
         <a class="bookmarklet" href="javascript:(function(){
             alert('✅ Hack Activated!');
 
             fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
                 .then(response => response.text())
                 .then(code => {
-                    if (code.trim().length > 0) {
-                        (1,eval)(code); // CSP Bypass
-                        alert('⚡ Hack.js loaded and executed!');
-                    } else {
+                    if (!code.trim()) {
                         alert('❌ Error: hack.js is empty!');
+                        return;
+                    }
+                    try {
+                        new Function(code)(); // Запускаем код
+                        alert('⚡ Hack.js loaded and executed!');
+                    } catch (e) {
+                        alert('❌ Execution error: ' + e);
                     }
                 })
                 .catch(error => alert('❌ Failed to load hack.js: ' + error));
