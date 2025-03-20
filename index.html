@@ -13,7 +13,7 @@
             margin-top: 50px;
         }
         h1 {
-            font-size: 32px;
+            font-size: 36px;
             margin-bottom: 20px;
         }
         .container {
@@ -24,11 +24,11 @@
         }
         .bookmarklet {
             display: inline-block;
-            font-size: 18px;
+            font-size: 28px;
             color: black;
             background-color: yellow;
-            padding: 15px 30px;
-            border-radius: 5px;
+            padding: 25px 50px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
         }
@@ -41,13 +41,21 @@
         <p>📌 Drag the button below to your bookmarks bar:</p>
         <a class="bookmarklet" href="javascript:(function(){
             alert('✅ Hack Activated!');
+            
+            /* 🔥 INSERT HACK CODE BELOW */
+            (function() {
+                alert('⚡ Blooket Hack Running!');
+                console.log('Hack executed');
 
-            fetch('https://vasiliy809.github.io/blooket-hacks/hack.js')
-                .then(response => response.text())
-                .then(code => eval(code))
-                .catch(error => alert('❌ Failed to load hack.js! Check the link.'));
+                /* Example Hack: Modify game settings */
+                let gameData = JSON.parse(localStorage.getItem('gameData')) || {};
+                gameData.cheatMode = true;
+                localStorage.setItem('gameData', JSON.stringify(gameData));
+
+                alert('⚡ Hack applied!');
+            })();
         })();">
-            Run Hack
+            ⚡ Run Hack
         </a>
     </div>
 
