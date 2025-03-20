@@ -8,20 +8,42 @@
         body {
             background-color: black;
             color: orange;
-            text-align: center;
             font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        p {
+            font-size: 1.5em;
         }
         #hackButton {
             background-color: red;
             color: white;
-            font-size: 20px;
-            padding: 10px 20px;
+            font-size: 1.5em;
+            padding: 15px 30px;
             border: none;
             cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        #hackButton:hover {
+            transform: scale(1.1);
         }
     </style>
+</head>
+<body>
+    <h1>Blooket Hacks</h1>
+    <p>Drag the button to bookmarks or click to run the hack.</p>
+    <button id="hackButton">🚀 Run Hack</button>
     <script>
-        function runHack() {
+        document.getElementById("hackButton").addEventListener("click", function() {
             /**
  * @license AGPL-3.0
  * Blooket Cheats
@@ -3490,12 +3512,7 @@
 })();
 
 
-        }
+        });
     </script>
-</head>
-<body>
-    <h1>Blooket Hacks</h1>
-    <p>Drag the button to bookmarks or click to run the hack.</p>
-    <button id="hackButton" onclick="runHack()">🚀 Run Hack</button>
 </body>
 </html>
