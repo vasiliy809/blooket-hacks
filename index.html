@@ -8,48 +8,58 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
             background-color: #121212;
-            color: white;
+            color: #FFA500;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        .bookmarklet {
-            display: inline-block;
-            padding: 20px 40px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            background: red;
-            text-decoration: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .bookmarklet:hover {
-            background: darkred;
+        .container {
+            width: 80%;
+            text-align: center;
         }
         h1 {
-            font-size: 48px;
+            font-size: 5vw;
             margin-bottom: 20px;
         }
         p {
-            font-size: 24px;
-            margin-bottom: 40px;
+            font-size: 2vw;
+            margin-bottom: 30px;
+        }
+        .bookmarklet {
+            width: 50%;
+            height: 25%;
+            font-size: 3vw;
+            font-weight: bold;
+            color: black;
+            background-color: #FFD700;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bookmarklet:hover {
+            background-color: #FFC300;
         }
     </style>
 </head>
 <body>
 
-    <h1>Bookmarklet Hack</h1>
-    <p>Drag this button to your bookmarks bar:</p>
-    
-    <a class="bookmarklet" href="javascript:(function(){ runHack(); })();">⚡ Run Hack</a>
+    <div class="container">
+        <h1>Launch Hack with One Click!</h1>
+        <p>Drag the button to bookmarks or click to run the hack.</p>
+
+        <button class="bookmarklet" onclick="runHack()">🚀 Run Hack</button>
+    </div>
 
     <script>
         function runHack() {
-            alert('✅ Hack Activated!');
-            
-            console.log('Hack is running...');
-            
+            alert("Hack activated! (Insert your hack script here)");
             /**
  * @license AGPL-3.0
  * Blooket Cheats
